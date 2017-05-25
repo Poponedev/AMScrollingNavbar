@@ -47,7 +47,7 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
     case .expanded:
       print("navbar expanded")
     case .scrolling:
-      print("navbar is moving")
+      print("navbar is moving,  delta = \(controller.scrollingDelta)")
     }
   }
 

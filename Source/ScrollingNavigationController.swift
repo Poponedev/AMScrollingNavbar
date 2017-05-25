@@ -38,13 +38,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    */
   open fileprivate(set) var state: NavigationBarState = .expanded {
     willSet {
-      if state != newValue {
+      if state != newValue || state == .scrolling  {
         scrollingNavbarDelegate?.scrollingNavigationController?(self, willChangeState: newValue)
       }
     }
     didSet {
       navigationBar.isUserInteractionEnabled = (state == .expanded)
-      if state != oldValue {
+      if state != oldValue || state == .scrolling {
         scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: state)
       }
     }
@@ -68,6 +68,11 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    */
   open var scrollingEnabled = true
 
+  /**
+   A delta when the navbar is being scrolled.
+  */
+  open var scrollingDelta: CGFloat = 0.0
+  
   /**
    The delegate for the scrolling navbar controller
    */
@@ -271,14 +276,14 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   }
 
   private func scrollWithDelta(_ delta: CGFloat, ignoreDelay: Bool = false) {
-    var scrollDelta = delta
+    scrollingDelta = delta
     let frame = navigationBar.frame
 
     // View scrolling up, hide the navbar
-    if scrollDelta > 0 {
+    if scrollingDelta > 0 {
       // Update the delay
       if !ignoreDelay {
-        delayDistance -= scrollDelta
+        delayDistance -= scrollingDelta
 
         // Skip if the delay is not over yet
         if delayDistance > 0 {
@@ -293,8 +298,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       }
 
       // Compute the bar position
-      if frame.origin.y - scrollDelta < -deltaLimit {
-        scrollDelta = frame.origin.y + deltaLimit
+      if frame.origin.y - scrollingDelta < -deltaLimit {
+        scrollingDelta = frame.origin.y + deltaLimit
       }
 
       // Detect when the bar is completely collapsed
@@ -306,10 +311,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       }
     }
 
-    if scrollDelta < 0 {
+    if scrollingDelta < 0 {
       // Update the delay
       if !ignoreDelay {
-        delayDistance += scrollDelta
+        delayDistance += scrollingDelta
 
         // Skip if the delay is not over yet
         if delayDistance > 0 && maxDelay < contentOffset.y {
@@ -318,8 +323,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       }
 
       // Compute the bar position
-      if frame.origin.y - scrollDelta > statusBarHeight {
-        scrollDelta = frame.origin.y - statusBarHeight
+      if frame.origin.y - scrollingDelta > statusBarHeight {
+        scrollingDelta = frame.origin.y - statusBarHeight
       }
 
       // Detect when the bar is completely expanded
@@ -331,10 +336,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       }
     }
 
-    updateSizing(scrollDelta)
+    updateSizing(scrollingDelta)
     updateNavbarAlpha()
-    restoreContentOffset(scrollDelta)
-    updateFollowers(scrollDelta)
+    restoreContentOffset(scrollingDelta)
+    updateFollowers(scrollingDelta)
   }
 
   private func updateFollowers(_ delta: CGFloat) {
