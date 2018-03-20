@@ -2,7 +2,9 @@
 All notable changes to this project will be documented in this file.
 `AMScrollingNavbar` adheres to [Semantic Versioning](http://semver.org/).
 
-- `4.0.x` Releases - [4.0.0](#400) | [4.0.1](#401)  
+- `4.2.x` Releases - [4.2.0](#420) | [4.2.1](#421) | [4.2.2](#422) | [4.2.3](#423) | [4.2.4](#424) | [4.3.0](#430)  
+- `4.1.x` Releases - [4.1.0](#410)  
+- `4.0.x` Releases - [4.0.0](#400) | [4.0.1](#401) | [4.0.2](#402) | [4.0.3](#403) | [4.0.4](#404) | [4.0.5](#405)  
 - `3.4.x` Releases - [3.4.0](#340) | [3.4.1](#341)  
 - `3.3.x` Releases - [3.3.0](#330) | [3.3.1](#331) | [3.3.2](#332) | [3.3.3](#333) | [3.3.4](#334)  
 - `3.2.x` Releases - [3.2.0](#320)
@@ -14,6 +16,53 @@ All notable changes to this project will be documented in this file.
 - `1.5.x` Releases - [1.5](#15) | [1.5.1](#151)
 
 ---
+
+## [4.3.0](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.3.0)
+
+- Fix orientation change issues
+- Fix #303
+
+## [4.2.4](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.2.4)
+
+- Fixed #303  
+
+## [4.2.3](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.2.3)
+
+- Fixed #304  
+
+## [4.2.2](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.2.2)
+
+- Merged #301  
+
+## [4.2.1](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.2.1)
+
+- Fixed an issue with `UITableView`'s floating headers  
+
+## [4.2.0](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.2.0)
+
+Account for the notch when the status bar is hidden on iPhone X. See #295
+
+## [4.1.0](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.1.0)
+
+Merged #292, #293
+
+## [4.0.5](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.0.5)
+
+Handle large titles in iOS11
+
+## [4.0.4](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.0.4)
+
+Expose all properties to Objective-C
+
+## [4.0.3](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.0.3)
+
+- Merged #274  
+- Merged #278  
+- Merged #269  
+
+## [4.0.2](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.0.2)
+
+- Merged #272
 
 ## [4.0.1](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.0.1)
 

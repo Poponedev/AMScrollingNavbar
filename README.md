@@ -15,7 +15,7 @@ scrolling of an observed content view
 
 <p align="center">
   <a href='https://appetize.io/app/31qahv9v4477ja36k8dn93wr8m' alt='Live demo'>
-    <img width="50" height="60" src="assets/demo.png"/>
+    <img width="150" height="75" src="assets/demo-button.png"/>
   </a>
 </p>
 
@@ -50,7 +50,7 @@ github "andreamazz/AMScrollingNavbar"
 
 ## Usage
 
-Make sure to use a subclass of `ScrollingNavigationController` for your `UINavigationController`. Either set the class of your `UINavigationController` in your storyboard, or create programmatically a `ScrollingNavigationController` instance in your code.
+Make sure to use `ScrollingNavigationController` instead of the standard `UINavigationController`. Either set the class of your `UINavigationController` in your storyboard, or create programmatically a `ScrollingNavigationController` instance in your code.
 
 Use `followScrollView(_: delay:)` to start following the scrolling of a scrollable view (e.g.: a `UIScrollView` or `UITableView`).
 #### Swift
@@ -103,6 +103,7 @@ if let navigationController = navigationController as? ScrollingNavigationContro
     navigationController.followScrollView(tableView, delay: 50.0, followers: [toolbar])
 }
 ```
+Note that when navigating away from the controller the followers might keep the scroll offset. Refer to [Handling navigation](https://github.com/andreamazz/AMScrollingNavbar#handling-navigation) for proper setup.  
 
 ## Scrolling the TabBar
 You can also pass a `UITabBar` in the `followers` array:
@@ -139,7 +140,7 @@ func scrollingNavigationController(_ controller: ScrollingNavigationController, 
 If the view controller with the scroll view pushes new controllers, you should call `showNavbar(animated:)` in your `viewWillDisappear(animated:)`:
 ```swift
 override func viewWillDisappear(_ animated: Bool) {
-  super.viewWillDisappear(animated)
+    super.viewWillDisappear(animated)
     if let navigationController = navigationController as? ScrollingNavigationController {
       navigationController.showNavbar(animated: true)
     }
